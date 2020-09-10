@@ -99,6 +99,9 @@ color: #E0B612;
 .notify-section{
     width: 35%;
     margin: 0 auto;
+    /* display: none; */
+}
+#pin-matched, #pin-not-matched{
     display: none;
 }
 .action-left {
