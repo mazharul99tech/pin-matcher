@@ -12,13 +12,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <input class="form-control" type="text">
-                    <button class="generate-btn">Generate Pin</button>
+                    <input id="pin-screen" class="form-control" type="text">
+                    <button id="generate-pin-button" class="generate-btn">Generate Pin</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <input class="form-control" type="text">
+                    <input id="screen-value" class="form-control" type="text">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
@@ -42,7 +42,7 @@
                                 <div class="button">C</div>
                             </div>
                             <div>
-                                <button type="submit" class="submit-btn">Submit</button>
+                                <button id="submit-button" type="submit" class="submit-btn">Submit</button>
                                 <p class="action-left">3 try left</p>
                             </div>
                     </div>
@@ -54,5 +54,41 @@
             <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
         </div>
     </div>
+
+    <script>
+        //generate pin step
+        document.getElementById('generate-pin-button').addEventListener('click', function(){
+            const pinScreen = document.getElementById('pin-screen');
+            const pinNum = 1000 + Math.random() * 9000;
+            const newPinNum = Math.round(pinNum);
+            pinScreen.value = newPinNum;
+        });
+
+        //button step starts
+        let screen = document.getElementById('screen-value');
+        const inputButton = document.getElementsByClassName('button');
+        let buttonValue = "";
+        for (let i = 0; i < inputButton.length; i++) {
+            const button = inputButton[i];
+            button.addEventListener('click', function(element){
+                let buttonText = element.target.innerText;
+                if(buttonText == "C"){
+                    buttonValue = "";
+                    screen.value = buttonValue;
+                }
+                if(buttonText == buttonText && buttonText != "C"){
+                    buttonValue += buttonText;
+                    screen.value = buttonValue;
+                }
+            });
+            
+        }
+        //submit button event handler
+       
+        document.getElementById('submit-button').addEventListener('click', function(){
+           
+        })
+        
+    </script>
 </body>
 </html>
